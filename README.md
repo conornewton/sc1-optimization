@@ -5,8 +5,7 @@ Author: [Conor Newton](https://github.com/conornewton)
 
 ### Installation
 
-If you have [devtools](https://www.github.com/r-lib/devtools) installed, run the following from your R shell.
+If you have [devtools](https://www.github.com/r-lib/devtools) installed, run the following from your R shell to install this package
 ```
-
     devtools::install_github("conornewton/sc1-optimization")
 ```
