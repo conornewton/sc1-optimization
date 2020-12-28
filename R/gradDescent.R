@@ -12,8 +12,16 @@ grad_descent <- function(f, x, grad_f) {
     step_size <- 0.001 # TODO: determine this at each stage
 
     if (missing(grad_f)) {
-        # TODO: Find the gradient numerically
-        return(0)
+        # Finds the gradient numerically using finite differencing
+        delta <- 0.00001
+        grad_f <- function(x) {
+            gen_f <- function(k) {
+                delta_e_k <- rep(0, length(x))
+                delta_e_k[k] <- delta
+                return((f(x + delta_e_k) - f(x)) / delta)
+            }
+            return(sapply(seq_len(length(x)), gen_f))
+        }
     }
 
     for (i in 1:n) {

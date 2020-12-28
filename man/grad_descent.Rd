@@ -7,7 +7,7 @@
 grad_descent(f, x, grad_f)
 }
 \arguments{
-\item{f}{A real valued function.}
+\item{f}{A real valued differentiable function.}
 
 \item{x}{A initial estimate for the local minimum.}
 
