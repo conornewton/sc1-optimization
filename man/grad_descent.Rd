@@ -4,14 +4,20 @@
 \alias{grad_descent}
 \title{Finds the location of a local minimum of a function using gradient descent.}
 \usage{
-grad_descent(f, x, grad_f)
+grad_descent(f, x, grad_f, n = 999, tol = 1e-07, step_method = "BLS")
 }
 \arguments{
 \item{f}{A real valued differentiable function.}
 
 \item{x}{A initial estimate for the local minimum.}
 
-\item{grad_f}{The gradient of f (Optional).}
+\item{grad_f}{A function that calulates gradient f at a given point (optional).}
+
+\item{n}{The maximum number of iterations (default 1000)}
+
+\item{tol}{Stop searching when the square of the magnitude of the gradient is less than tol (default 1e-7)}
+
+\item{step_method}{The function to be used to calculate the step size on each iteration (default BLS)}
 }
 \value{
 A local minimum of the function f.
