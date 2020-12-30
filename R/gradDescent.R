@@ -1,6 +1,7 @@
 # Author: Conor Newton (conornewton@gmail.com)
 
 # TODO: Fix norm calculations
+# TODO: Consider the case when the new x value gives a higher value
 
 #' Finds the location of a local minimum of a function using gradient descent.
 #'
@@ -15,15 +16,7 @@
 grad_descent <- function(f, x, grad_f, n = 999, tol = 1e-7, step_method = "BLS") {
     if (missing(grad_f)) {
         # Finds the gradient numerically using finite differencing
-        delta <- 0.00001
-        grad_f <- function(x) {
-            gen_f <- function(k) {
-                delta_e_k <- rep(0, length(x))
-                delta_e_k[k] <- delta
-                return((f(x + delta_e_k) - f(x - delta_e_k)) / (2 *  delta))
-            }
-            return(sapply(seq_len(length(x)), gen_f))
-        }
+        grad_f <- num_grad(f)
     }
 
     if (step_method == "BLS") {
@@ -86,4 +79,19 @@ con <- function(f, x, grad_f, n, tol, step_size) {
         x <- x - step_size * grad_f(x)
     }
     return(x)
+}
+
+num_grad <- function(f) {
+    delta <- 0.00001
+    return(function(x) {
+            gen_f <- function(k) {
+                delta_e_k <- rep(0, length(x))
+                delta_e_k[k] <- delta
+                return((f(x + delta_e_k) - f(x - delta_e_k)) / (2 *  delta))
+            }
+            return(sapply(seq_len(length(x)), gen_f))
+
+            # return(gen_f(seq_len(length(x)))) # TODO: realise why this doesnt work?
+        }
+    )
 }

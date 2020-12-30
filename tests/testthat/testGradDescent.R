@@ -36,3 +36,5 @@ test_that("rosebrock function", {
                  c(1, 1),
                  tolerance = 1e-2)
 })
+
+# TODO: do a MSE test
