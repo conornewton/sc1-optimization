@@ -1,7 +1,7 @@
-Package: Optimize-SC1
+Package: sc1-optimization
 Title: Gradient Descent and Stochastic Gradient Descent Package
 Version: 1.0
-Authors@R: 
+Authors@R:
     person(given = "Conor",
            family = "Newton",
            email = "conornewton@gmail.com")
