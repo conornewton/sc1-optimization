@@ -15,12 +15,9 @@ stoc_grad_descent <- function(f, data, w, step_size = 0.0001) {
     rows <- sample(nrow(data)) # Permutations of rows
 
     for (i in 1:nrow(data)) {
-        print(data[rows[i], 1:(ncol(data)-1)])
-        print(data[rows[i], ncol(data)])
         w <- w - step_size * stoc_num_grad(f, w, data[rows[i], 1:(ncol(data)-1)], data[rows[i], ncol(data)])
     }
 
-    print(w)
     return(w)
 }
 
