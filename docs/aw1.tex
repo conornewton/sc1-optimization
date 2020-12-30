@@ -1,0 +1,224 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[12pt,]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdftitle={Statistical Computing - Assessed Coursework 1},
+            pdfauthor={Conor Newton},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+
+\title{Statistical Computing - Assessed Coursework 1}
+\author{Conor Newton}
+\date{}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+\newpage
+
+\hypertarget{the-package}{%
+\section{The Package}\label{the-package}}
+
+I have created a package that has provides functions for both gradient
+descent and stochastic gradient descent.
+
+The package and all of the files for this project can be found
+\href{https://www.github.com/conornewton/sc1-optimization}{here} on
+github:
+
+\url{https://www.github.com/conornewton/sc1-optimization}
+
+\hypertarget{installation}{%
+\subsection{Installation}\label{installation}}
+
+This package can be installed directly from github using the following
+command in an R shell if \texttt{devtools} is installed
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{    devtools}\OperatorTok{::}\KeywordTok{install_github}\NormalTok{(}\StringTok{"conornewton/sc1-optimization"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+This package has no required dependencies.
+
+\hypertarget{documentation}{%
+\subsection{Documentation}\label{documentation}}
+
+The documentation for this package is generated automatically from the
+source files using \texttt{roxygen2}.
+
+The package exports two functions, \texttt{gradDescent} and
+\texttt{stocGradDescent}. The documentation for them can be accessed
+from the shell using the \texttt{?gradDescent} and
+\texttt{?stocGradDescent} commands.
+
+Alternatively, the documentation can be accessed in a pdf here:
+
+\url{https://www.github.com/conornewton/sc1-optimization/doc/man.pdf}
+
+\hypertarget{usage}{%
+\subsection{Usage}\label{usage}}
+
+Here are some basic example of how to use the \texttt{gradDescent} and
+\texttt{stocGradDescent} functions.
+
+Firstly, we can use gradDescent to estimate the argument of a local
+minimum of the Rosenbrock function
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \CommentTok{# Rosenbrock function}
+\NormalTok{    f <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) (}\DecValTok{1} \OperatorTok{-}\StringTok{ }\NormalTok{x[}\DecValTok{1}\NormalTok{])}\OperatorTok{^}\DecValTok{2} \OperatorTok{+}\StringTok{ }\DecValTok{100} \OperatorTok{*}\StringTok{ }\NormalTok{(x[}\DecValTok{2}\NormalTok{] }\OperatorTok{-}\StringTok{ }\NormalTok{x[}\DecValTok{1}\NormalTok{]}\OperatorTok{^}\DecValTok{2}\NormalTok{)}\OperatorTok{^}\DecValTok{2}
+    \KeywordTok{grad_descent}\NormalTok{(f, }\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{), }\DataTypeTok{n =} \DecValTok{100000}\NormalTok{, }\DataTypeTok{step_method =} \StringTok{"BB"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Secondly, we can use stocGradDescent to estimate the argument that
+minimises the mean square error
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \CommentTok{# Summand of the objective function}
+\NormalTok{    f <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(w, x, y) (}\KeywordTok{sum}\NormalTok{(w }\OperatorTok{*}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, x)) }\OperatorTok{-}\StringTok{ }\NormalTok{y)}\OperatorTok{^}\DecValTok{2}
+
+    \CommentTok{# Generating a data set which will appear in the summand}
+\NormalTok{    y <-}\StringTok{ }\KeywordTok{mapply}\NormalTok{(}\ControlFlowTok{function}\NormalTok{(x1, x2) }\KeywordTok{sum}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{20}\NormalTok{, }\DecValTok{1}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{c}\NormalTok{(x1, x2)) }\OperatorTok{+}\StringTok{ }\DecValTok{2}\NormalTok{, }\DecValTok{1}\OperatorTok{:}\DecValTok{100}\NormalTok{, }\DecValTok{1}\OperatorTok{:}\DecValTok{100}\NormalTok{)}
+\NormalTok{    data <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{100}\NormalTok{, }\DecValTok{1}\OperatorTok{:}\DecValTok{100}\NormalTok{, y)}
+
+    \KeywordTok{stoc_grad_descent}\NormalTok{(f, data, }\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{testing}{%
+\subsection{Testing}\label{testing}}
+
+This package uses \texttt{testthat} for unit testing. Both the
+\texttt{gradDescent} and \texttt{stocGradDescent} have unit tests to
+ensure that they work for a variety of edge cases. These test are found
+in the \texttt{tests/testthat} directory. If \texttt{testthat} is
+installed locally, the package will be tested automatically on
+installation.
+
+After installation, the tests can be run manually using the following
+command in the R shell
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{    devtools}\OperatorTok{::}\KeywordTok{test}\NormalTok{(}\StringTok{"sc1-optimization"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\newpage
+
+\hypertarget{gradient-descent}{%
+\section{Gradient Descent}\label{gradient-descent}}
+
+\newpage
+
+\hypertarget{stochastic-gradient-descent}{%
+\section{Stochastic Gradient
+Descent}\label{stochastic-gradient-descent}}
+
+\end{document}

@@ -1,0 +1,87 @@
+---
+    title: Statistical Computing - Assessed Coursework 1
+    author: Conor Newton
+    output:
+        pdf_document:
+            toc: true
+            toc_depth: 3
+            number_sections: true
+    fontsize: 12pt
+---
+\newpage
+
+# The Package
+
+I have created a package that has provides functions for both gradient descent and stochastic gradient descent.
+
+The package and all of the files for this project can be found [here](https://www.github.com/conornewton/sc1-optimization) on github:
+
+https://www.github.com/conornewton/sc1-optimization
+
+## Installation
+
+This package can be installed directly from github using the following command in an R shell if `devtools` is installed
+
+```{r eval=FALSE}
+    devtools::install_github("conornewton/sc1-optimization")
+```
+
+This package has no required dependencies.
+
+## Documentation
+
+The documentation for this package is generated automatically from the source files using `roxygen2`. 
+
+The package exports two functions, `gradDescent` and `stocGradDescent`. The documentation for them can be accessed from the shell using the `?gradDescent` and `?stocGradDescent` commands.
+
+Alternatively, the documentation can be accessed in a pdf here:
+
+https://www.github.com/conornewton/sc1-optimization/doc/man.pdf
+
+## Usage
+
+Here are some basic example of how to use the `gradDescent` and `stocGradDescent` functions.
+
+Firstly, we can use gradDescent to estimate the argument of a local minimum of the Rosenbrock function
+
+```{r eval=FALSE}
+    # Rosenbrock function
+    f <- function(x) (1 - x[1])^2 + 100 * (x[2] - x[1]^2)^2
+    grad_descent(f, c(0, 0), n = 100000, step_method = "BB")
+```
+
+Secondly, we can use stocGradDescent to estimate the argument that minimises the mean square error
+
+```{r eval=FALSE}
+    # Summand of the objective function
+    f <- function(w, x, y) (sum(w * c(1, x)) - y)^2
+
+    # Generating a data set which will appear in the summand
+    y <- mapply(function(x1, x2) sum(c(20, 1) * c(x1, x2)) + 2, 1:100, 1:100)
+    data <- data.frame(1:100, 1:100, y)
+
+    stoc_grad_descent(f, data, c(0, 0, 0))
+```
+
+
+
+## Testing
+
+This package uses `testthat` for unit testing. Both the `gradDescent` and `stocGradDescent` have unit tests to ensure that they work for a variety of edge cases. These test are found in the `tests/testthat` directory. If `testthat` is installed locally, the package will be tested automatically on installation.
+
+After installation, the tests can be run manually using the following command in the R shell
+```{r eval=FALSE}
+    devtools::test("sc1-optimization")
+```
+
+
+\newpage
+
+# Gradient Descent
+
+
+
+\newpage
+
+# Stochastic Gradient Descent
+
