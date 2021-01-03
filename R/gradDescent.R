@@ -1,8 +1,5 @@
 # Author: Conor Newton (conornewton@gmail.com)
 
-# TODO: Fix norm calculations
-# TODO: Consider the case when the new x value gives a higher value
-
 #' Finds the location of a local minimum of a function using gradient descent.
 #'
 #' @param f A real valued differentiable function.

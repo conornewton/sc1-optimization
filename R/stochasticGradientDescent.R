@@ -1,16 +1,12 @@
 # Author: Conor Newton (conornewton@gmail.com)
 
-# TODO: choose a more precise method for determining step_size
-
 #' Finds the location of a local minimum of a function using stochastic gradient descent.
 #' @param f A real valued differentiable function
-#' @param data The data set to b
+#' @param data The data set to be used with f
 #' @param w Initial guess for a local minimum of f
 #' @return An estimate for a local minimum of \sum f.
 #' @export
 stoc_grad_descent <- function(f, data, w, step_size = 0.0001) {
-    #  TODO: verify the length of w
-
     set.seed(NULL)
     rows <- sample(nrow(data)) # Permutations of rows
 
