@@ -1,0 +1,401 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[12pt,]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdftitle={Statistical Computing - Assessed Coursework 1},
+            pdfauthor={Conor Newton},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+
+\title{Statistical Computing - Assessed Coursework 1}
+\author{Conor Newton}
+\date{}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+\newpage
+
+\hypertarget{the-package}{%
+\section{The Package}\label{the-package}}
+
+I have created a package that provides functions for both gradient
+descent and stochastic gradient descent.
+
+The package and all of the files for this project can be found
+\href{https://www.github.com/conornewton/sc1-optimization}{here} on
+github:
+
+\url{https://www.github.com/conornewton/sc1-optimization}
+
+\hypertarget{installation}{%
+\subsection{Installation}\label{installation}}
+
+This package can be installed directly from github using the following
+command in an R shell if \texttt{devtools} is installed
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{    devtools}\OperatorTok{::}\KeywordTok{install_github}\NormalTok{(}\StringTok{"conornewton/sc1-optimization"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+This package has no required dependencies.
+
+\hypertarget{documentation}{%
+\subsection{Documentation}\label{documentation}}
+
+The documentation for this package is generated automatically from the
+source files using \texttt{roxygen2}.
+
+The package exports two functions, \texttt{grad\_descent} and
+\texttt{stoc\_grad\_descent}. The documentation for them can be accessed
+from the shell using the \texttt{?grad\_descent} and
+\texttt{?stoc\_grad\_descent} commands.
+
+Alternatively, the documentation can be accessed in a pdf here:
+
+\url{https://www.github.com/conornewton/sc1-optimization/doc/man.pdf}
+
+\hypertarget{testing}{%
+\subsection{Testing}\label{testing}}
+
+This package uses \texttt{testthat} for unit testing. Both the
+\texttt{gradDescent} and \texttt{stocGradDescent} have unit tests to
+ensure that they work for a variety of edge cases. These test are found
+in the \texttt{tests/testthat} directory. If \texttt{testthat} is
+installed locally, the package will be tested automatically on
+installation.
+
+After installation, the tests can be run manually using the following
+command in the R shell
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{    devtools}\OperatorTok{::}\KeywordTok{test}\NormalTok{(}\StringTok{"sc1-optimization"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\newpage
+
+\hypertarget{gradient-descent}{%
+\section{Gradient Descent}\label{gradient-descent}}
+
+This focuses on the methodology of my gradient descent implementation.
+The relevant source code and tests can be found at the following urls
+
+\begin{itemize}
+\tightlist
+\item
+  \url{https://github.com/conornewton/sc1-optimization/blob/master/R/gradDescent.R}
+\item
+  \url{https://github.com/conornewton/sc1-optimization/blob/master/tests/testthat/testGradDescent.R}
+\end{itemize}
+
+\hypertarget{introduction}{%
+\subsection{Introduction}\label{introduction}}
+
+Gradient descent methods attempt to find a local minimum of a
+differentiable functions \(f\) by moving along the curve in the opposite
+direction to the gradient at each point. Since the gradient gives the
+direction of the ``fastest increase'' moving in the opposite direction
+should gives us the fastest decrease. Gradient descent is performed by
+iterating the following \[
+    \mathbf{x}_n = \mathbf{x}_{n-1} - \gamma_n \nabla f(\mathbf{x}_{n-1})
+\]
+
+Here \(\gamma_n\) is the step-size. This determines how much we should
+move in the opposite direction of gradient in each step. For simplicity,
+it can be choose to be constant. More effective gradient descent
+approaches use a systematic way of determining \(\gamma_n\) on each
+iteration, such as a line search.
+
+\hypertarget{the-gradient}{%
+\subsection{The Gradient}\label{the-gradient}}
+
+For our gradient descent implementation, we have the option of passing
+as a parameter the gradient of the function we would like to minimize
+otherwise it will estimate the gradient at each point using finite
+differencing.
+
+Finite differencing at a point \(\mathbf{x}\) works by finding the
+gradient of the line passing through two points on each side and close
+to \(\mathbf{x}\). Each component of the gradient is computed by the
+following \[
+(\nabla f (\mathbf{x}))^{(i)} \approx \frac{f(\mathbf{x} + \Delta \mathbf{e}_i) - f(\mathbf{x} - \Delta \mathbf{e}_i)}{2\Delta}
+\] where \(\Delta\) is a small constant.
+
+The gradient is also used to decide when we have found a local minimum.
+If the magnitude of the gradient is small, then we are a point with
+little curvature and therefore close to a local minimum. For our
+gradient descent implementation, the user can provide a tolerance for
+the magnitude of the gradient to decide when to terminate the search.
+
+\hypertarget{step-sizes}{%
+\subsection{Step Sizes}\label{step-sizes}}
+
+In this package, we have the choice of using the following three
+different approaches to calculate step size
+
+\begin{itemize}
+\tightlist
+\item
+  Constant step size
+\item
+  Line Search
+\item
+  Barzilai-Borwein
+\end{itemize}
+
+All three of these approaches share the same guarantee that gradient
+descent will converge to a local minimum if \(f\) is convex and its
+gradient \(\nabla f\) is Lipschitz.
+
+\hypertarget{constant-step-size}{%
+\subsubsection{Constant Step Size}\label{constant-step-size}}
+
+Choosing a constant step size is the most basic approach to gradient
+descent. For every iteration, our estimate for the minimum
+\(\mathbf{x}\) moves by the same distance in the opposite direction of
+the gradient. This can often lead to overshooting/undershooting the
+minimum in that direction, therefore this approach can take long to
+converge. The next two methods both give faster convergence.
+
+\hypertarget{backtracking-line-search}{%
+\subsubsection{Backtracking Line
+Search}\label{backtracking-line-search}}
+
+Line search selects the step size \(\gamma_n\) that satisfies the
+following
+\[ \gamma_n = \underset{\gamma}{\text{argmin}} f(\mathbf{x}_{n-1} - \gamma\nabla f(\mathbf{x}))\]
+This is finding finding the argument \(\gamma\) that minimises \(f\) on
+the line \((\mathbf{x}_{n-1} - \gamma\nabla f(\mathbf{x}))\).
+
+A backtracking approach can be used to quickly estimate this line search
+step size. This works by iterating \[ \alpha_n = \tau \alpha_{n - 1}\]
+where \(\alpha_n\) is the step size and \(\tau \in (0, 1)\) until the
+following is satisfied
+\[{f(\mathbf{x}) - f(\mathbf{x} - \alpha_j \nabla f(\mathbf{x}))} \ge c \alpha_j ||\nabla f(\mathbf{x})||^2\]
+for some \(c \in (0, 1)\). Essentially we are just looking for a
+sufficient drop in the objective function in the direction of
+\(\nabla f(\mathbf{x})\).
+
+\hypertarget{barzilai-borwein-method}{%
+\subsubsection{Barzilai-Borwein Method}\label{barzilai-borwein-method}}
+
+A third approach to calculating the step size is the Barzilai-Borwein
+method. This approach takes into consideration the previous estimate
+\(\mathbf{x}_{n-1}\). The step size is calculated as follows \[
+    \gamma_n = \frac{(\mathbf{x} - \mathbf{x}_{n-1}) \cdot (\nabla f(\mathbf{x}_n) - \nabla f(\mathbf{x}_{n-1}))}{||\nabla f(\mathbf{x}_n) - \nabla f(\mathbf{x}_{n-1})||^2}
+\]
+
+\hypertarget{usage}{%
+\subsection{Usage}\label{usage}}
+
+Here we give some examples of how we can use the \texttt{grad\_descent}
+function.
+
+Firstly, we can use \texttt{grad\_descent} to estimate the argument of
+the local minimum of the Rosenbrock function using a constant step size.
+Our initial guess is the point \((0,0)\) and our optimization will not
+exceed 100000 iterations.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \CommentTok{# Rosenbrock function}
+\NormalTok{    f <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) (}\DecValTok{1} \OperatorTok{-}\StringTok{ }\NormalTok{x[}\DecValTok{1}\NormalTok{])}\OperatorTok{^}\DecValTok{2} \OperatorTok{+}\StringTok{ }\DecValTok{100} \OperatorTok{*}\StringTok{ }\NormalTok{(x[}\DecValTok{2}\NormalTok{] }\OperatorTok{-}\StringTok{ }\NormalTok{x[}\DecValTok{1}\NormalTok{]}\OperatorTok{^}\DecValTok{2}\NormalTok{)}\OperatorTok{^}\DecValTok{2}
+    \KeywordTok{grad_descent}\NormalTok{(f, }\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{), }\DataTypeTok{n =} \DecValTok{100000}\NormalTok{, }\DataTypeTok{step_method =} \FloatTok{0.01}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+This can be estimated much quicker if we choose a different step
+methods.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \CommentTok{# Uses Barzilai-Borwein}
+\NormalTok{    f <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) (}\DecValTok{1} \OperatorTok{-}\StringTok{ }\NormalTok{x[}\DecValTok{1}\NormalTok{])}\OperatorTok{^}\DecValTok{2} \OperatorTok{+}\StringTok{ }\DecValTok{100} \OperatorTok{*}\StringTok{ }\NormalTok{(x[}\DecValTok{2}\NormalTok{] }\OperatorTok{-}\StringTok{ }\NormalTok{x[}\DecValTok{1}\NormalTok{]}\OperatorTok{^}\DecValTok{2}\NormalTok{)}\OperatorTok{^}\DecValTok{2}
+    \KeywordTok{grad_descent}\NormalTok{(f, }\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{), }\DataTypeTok{n =} \DecValTok{100000}\NormalTok{, }\DataTypeTok{step_method =} \StringTok{"BB"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \CommentTok{# Uses Backtracking Line Search}
+\NormalTok{    f <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) (}\DecValTok{1} \OperatorTok{-}\StringTok{ }\NormalTok{x[}\DecValTok{1}\NormalTok{])}\OperatorTok{^}\DecValTok{2} \OperatorTok{+}\StringTok{ }\DecValTok{100} \OperatorTok{*}\StringTok{ }\NormalTok{(x[}\DecValTok{2}\NormalTok{] }\OperatorTok{-}\StringTok{ }\NormalTok{x[}\DecValTok{1}\NormalTok{]}\OperatorTok{^}\DecValTok{2}\NormalTok{)}\OperatorTok{^}\DecValTok{2}
+    \KeywordTok{grad_descent}\NormalTok{(f, }\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{), }\DataTypeTok{n =} \DecValTok{100000}\NormalTok{, }\DataTypeTok{step_method =} \StringTok{"BLS"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+We can give our \texttt{grad\_descent} function an explicit gradient of
+\(f\) and choose a tolerance for our gradient as follows
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{    f <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) x[}\DecValTok{1}\NormalTok{]}\OperatorTok{^}\DecValTok{2} \OperatorTok{+}\StringTok{ }\NormalTok{x[}\DecValTok{2}\NormalTok{]}\OperatorTok{^}\DecValTok{2} \OperatorTok{+}\StringTok{ }\DecValTok{3} \OperatorTok{*}\StringTok{ }\NormalTok{x[}\DecValTok{1}\NormalTok{] }\OperatorTok{+}\StringTok{ }\DecValTok{2} \OperatorTok{*}\StringTok{ }\NormalTok{x[}\DecValTok{2}\NormalTok{] }\OperatorTok{+}\StringTok{ }\DecValTok{9}
+\NormalTok{    grad_f <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) }\KeywordTok{c}\NormalTok{(}\DecValTok{2} \OperatorTok{*}\StringTok{ }\NormalTok{x[}\DecValTok{1}\NormalTok{] }\OperatorTok{+}\StringTok{ }\DecValTok{3}\NormalTok{, }\DecValTok{2} \OperatorTok{*}\StringTok{ }\NormalTok{x[}\DecValTok{2}\NormalTok{] }\OperatorTok{+}\StringTok{ }\DecValTok{2}\NormalTok{)}
+    \KeywordTok{grad_descent}\NormalTok{(f, }\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{), grad_f, }\DataTypeTok{tol =} \FloatTok{1e-4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+This summarises pretty much all of the functionality of the
+\texttt{grad\_descent} function. \newpage
+
+\hypertarget{stochastic-gradient-descent}{%
+\section{Stochastic Gradient
+Descent}\label{stochastic-gradient-descent}}
+
+This focuses on the methodology of my gradient descent implementation.
+The relevant source code and tests can be found at the following urls
+
+\begin{itemize}
+\tightlist
+\item
+  \url{https://github.com/conornewton/sc1-optimization/blob/master/R/gradDescent.R}
+\item
+  \url{https://github.com/conornewton/sc1-optimization/blob/master/tests/testthat/testGradDescent.R}
+\end{itemize}
+
+\hypertarget{introduction-1}{%
+\subsection{Introduction}\label{introduction-1}}
+
+Stochastic gradient descent is a gradient descent method that is
+commonly used to find minimum of a function that depends on a large data
+set.
+
+Instead, if we can break up the objective function into \(n\) pieces \[
+Q(\mathbf{x}) = \sum_{i=1}^nQ_i(\mathbf{x})
+\] where each \(Q_i\) only involves using the i'th data point, we can
+then apply stochastic gradient descent. Functions of this form are
+common in machine learning, such as mean square error, log-likelihood
+etc.
+
+Stochastic gradient descent can be performed by iterating the following
+\[
+    \mathbf{x}_{n} = \mathbf{x}_{n-1} - \gamma \nabla Q_i(\mathbf{x})
+\] In each iteration we are only considering a single data point, but by
+the end of the computation all of the data points have been involved in
+learning \(\mathbf{x}\). For our simple implementation we have set
+\(\gamma\) to be constant.
+
+\hypertarget{usage-1}{%
+\subsection{Usage}\label{usage-1}}
+
+We can use stoc\_grad\_descent to estimate the argument that minimises
+the mean square error as follows
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \CommentTok{# Summand of the objective function}
+\NormalTok{    f <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(w, x, y) (}\KeywordTok{sum}\NormalTok{(w }\OperatorTok{*}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, x)) }\OperatorTok{-}\StringTok{ }\NormalTok{y)}\OperatorTok{^}\DecValTok{2}
+
+    \CommentTok{# Generating a data set which will appear in the summand}
+\NormalTok{    y <-}\StringTok{ }\KeywordTok{mapply}\NormalTok{(}\ControlFlowTok{function}\NormalTok{(x1, x2) }\KeywordTok{sum}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{20}\NormalTok{, }\DecValTok{1}\NormalTok{) }\OperatorTok{*}\StringTok{ }\KeywordTok{c}\NormalTok{(x1, x2)) }\OperatorTok{+}\StringTok{ }\DecValTok{2}\NormalTok{, }\DecValTok{1}\OperatorTok{:}\DecValTok{100}\NormalTok{, }\DecValTok{1}\OperatorTok{:}\DecValTok{100}\NormalTok{)}
+\NormalTok{    data <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{100}\NormalTok{, }\DecValTok{1}\OperatorTok{:}\DecValTok{100}\NormalTok{, y)}
+
+    \KeywordTok{stoc_grad_descent}\NormalTok{(f, data, }\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\end{document}
