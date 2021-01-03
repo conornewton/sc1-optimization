@@ -90,8 +90,6 @@ num_grad <- function(f) {
                 return((f(x + delta_e_k) - f(x - delta_e_k)) / (2 *  delta))
             }
             return(sapply(seq_len(length(x)), gen_f))
-
-            # return(gen_f(seq_len(length(x)))) # TODO: realise why this doesnt work?
         }
     )
 }
