@@ -4,7 +4,7 @@
 #' @param f A real valued differentiable function
 #' @param data The data set to be used with f
 #' @param w Initial guess for a local minimum of f
-#' @return An estimate for a local minimum of \sum f.
+#' @return An estimate for a local minimum of sum f.
 #' @export
 stoc_grad_descent <- function(f, data, w, step_size = 0.0001) {
     set.seed(NULL)

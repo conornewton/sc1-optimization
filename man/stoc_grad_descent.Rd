@@ -9,12 +9,12 @@ stoc_grad_descent(f, data, w, step_size = 1e-04)
 \arguments{
 \item{f}{A real valued differentiable function}
 
-\item{data}{The data set to b}
+\item{data}{The data set to be used with f}
 
 \item{w}{Initial guess for a local minimum of f}
 }
 \value{
-An estimate for a local minimum of \sum f.
+An estimate for a local minimum of sum f.
 }
 \description{
 Finds the location of a local minimum of a function using stochastic gradient descent.

@@ -30,6 +30,12 @@ This package can be installed directly from github using the following command i
 
 This package has no required dependencies.
 
+To load the package in R, use the following command
+```{r eval=FALSE}
+    library(sc1optimization)
+```
+Notice that there is no hyphen in the package name here.
+
 ## Documentation
 
 The documentation for this package is generated automatically from the source files using `roxygen2`. 

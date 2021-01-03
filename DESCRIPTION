@@ -1,11 +1,11 @@
-Package: sc1-optimization
+Package: sc1optimization
 Title: Gradient Descent and Stochastic Gradient Descent Package
 Version: 1.0
 Authors@R:
     person(given = "Conor",
            family = "Newton",
            email = "conornewton@gmail.com",
-           role = c("aut"))
+           role = c("aut", "cre"))
 Description: Gradient descent and Stochastic descent package, made for statistical-computing-1
 License: MIT
 Encoding: UTF-8
