@@ -158,8 +158,8 @@ This summarises pretty much all of the functionality of the `grad_descent` funct
 
 This focuses on the methodology of my gradient descent implementation. The relevant source code and tests can be found at the following urls
 
-* https://github.com/conornewton/sc1-optimization/blob/master/R/gradDescent.R 
-* https://github.com/conornewton/sc1-optimization/blob/master/tests/testthat/testGradDescent.R
+* https://github.com/conornewton/sc1-optimization/blob/master/R/stochasticGradDescent.R 
+* https://github.com/conornewton/sc1-optimization/blob/master/tests/testthat/testStocGradDescent.R
 
 ## Introduction
 
@@ -178,9 +178,11 @@ $$
 $$
 In each iteration we are only considering a single data point, but by the end of the computation all of the data points have been involved in learning $\mathbf{x}$. For our simple implementation we have set $\gamma$ to be constant.
 
+For the `stoc_grad_descent` function, the gradient is estimated using finite differencing.
+
 ## Usage
 
-We can use stoc_grad_descent to estimate the argument that minimises the mean square error as follows
+We can use `stoc_grad_descent` to estimate the argument that minimises the mean square error as follows
 
 ```{r eval=FALSE}
     # Summand of the objective function

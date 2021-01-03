@@ -352,9 +352,9 @@ The relevant source code and tests can be found at the following urls
 \begin{itemize}
 \tightlist
 \item
-  \url{https://github.com/conornewton/sc1-optimization/blob/master/R/gradDescent.R}
+  \url{https://github.com/conornewton/sc1-optimization/blob/master/R/stochasticGradDescent.R}
 \item
-  \url{https://github.com/conornewton/sc1-optimization/blob/master/tests/testthat/testGradDescent.R}
+  \url{https://github.com/conornewton/sc1-optimization/blob/master/tests/testthat/testStocGradDescent.R}
 \end{itemize}
 
 \hypertarget{introduction-1}{%
@@ -379,11 +379,14 @@ the end of the computation all of the data points have been involved in
 learning \(\mathbf{x}\). For our simple implementation we have set
 \(\gamma\) to be constant.
 
+For the \texttt{stoc\_grad\_descent} function, the gradient is estimated
+using finite differencing.
+
 \hypertarget{usage-1}{%
 \subsection{Usage}\label{usage-1}}
 
-We can use stoc\_grad\_descent to estimate the argument that minimises
-the mean square error as follows
+We can use \texttt{stoc\_grad\_descent} to estimate the argument that
+minimises the mean square error as follows
 
 \begin{Shaded}
 \begin{Highlighting}[]
